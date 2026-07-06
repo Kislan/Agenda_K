@@ -1,0 +1,30 @@
+app-adiciona-contato,
+app-filtro-contato,
+app-exibe-contatos {
+  display: block;
+  max-width: 600px; 
+  margin: 24px auto;
+  padding: 0 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1c1b22;
+}
+
+::ng-deep .contato-form,
+::ng-deep .lista-contatos {
+  border: none;
+  padding: 24px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+::ng-deep form > div {
+  margin-bottom: 18px;
+}
+
+
+::ng-deep body {
+  background-color: #e0e0e0;
+  margin: 0;
+  padding: 20px 0;
+}

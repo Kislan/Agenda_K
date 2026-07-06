@@ -1,0 +1,58 @@
+.lista-contatos {
+  background: transparent;
+  padding: 0;
+}
+
+.lista-contatos h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #1c1b22;
+  font-weight: 700;
+}
+
+.lista-contatos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-contatos li {
+  background: #ffffff;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(28, 27, 34, 0.06);
+  border-left: 4px solid #0060df;
+  transition: all 0.2s ease;
+}
+
+.lista-contatos li:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(28, 27, 34, 0.12);
+  border-left-color: #ff7139;
+}
+
+
+.lista-contatos li > button {
+  background-color: transparent;
+  color: #e22850; 
+  border: 1px solid #e22850;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 10px;
+  transition: all 0.2s ease;
+}
+
+.lista-contatos li > button:hover {
+  background-color: #e22850;
+  color: white;
+  box-shadow: 0 4px 10px rgba(226, 40, 80, 0.2);
+}
