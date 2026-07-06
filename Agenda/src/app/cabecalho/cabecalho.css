@@ -1,0 +1,66 @@
+.cabecalho {
+  height: 64px;
+  background: #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 2px 6px rgba(28, 27, 34, 0.04);
+}
+
+.cabecalho .brand .logo {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff9500, #ff1744);
+  color: #e0e0e0;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 12px rgba(255, 23, 68, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.cabecalho .brand .logo:hover {
+  transform: scale(1.05);
+}
+
+.cabecalho .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1c1b22; 
+}
+
+.cabecalho .subtitle {
+  font-size: 0.85rem;
+  color: #5b5b66; 
+  line-height: 1.2;
+}
+
+.cabecalho .actions .btn {
+  border-radius: 8px;
+  background-color: #0060df; 
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cabecalho .actions .btn:hover {
+  background-color: #003eaa;
+  box-shadow: 0 4px 8px rgba(0, 96, 223, 0.2);
+}
+
+@media (max-width: 560px) {
+  .cabecalho {
+    height: auto;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .cabecalho .subtitle {
+    display: none;
+  }
+}
