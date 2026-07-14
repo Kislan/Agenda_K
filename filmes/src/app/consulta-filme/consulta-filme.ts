@@ -10,28 +10,41 @@ import { SearchItem } from './filme';
   styleUrl: './consulta-filme.css',
 })
 export class ConsultaFilme {
-  #filmeService = inject(FilmeService)
-  protected busca = signal('')
-  protected filmes = signal<SearchItem[]>([])
+  #filmeService = inject(FilmeService);
+  protected busca = signal('');
+  protected filmes = signal<SearchItem[]>([]);
+  protected buscaRealizada = signal(false); 
 
   constructor() {
-    this.buscarFilmes(this.busca())
+    if (this.busca()) {
+      this.buscarFilmes(this.busca());
+    }
   }
 
   atualizarBusca(event: Event): void {
-  const input = event.target as HTMLInputElement;
-  this.busca.set(input.value);
+    const input = event.target as HTMLInputElement;
+    this.busca.set(input.value);
   }
 
   buscarFilmes(titulo: string) {
-    this.filmes.set([])
+    const termo = titulo.trim();
+    if (!termo) return;
 
-    this.#filmeService.buscarFilmes(titulo).subscribe(
-      res => {
+    this.filmes.set([]);
+    this.buscaRealizada.set(true);
+
+    this.#filmeService.buscarFilmes(termo).subscribe({
+      next: (res) => {
         if (res.Response === 'True' && res.Search) {
-          this.filmes.set(res.Search)
+          this.filmes.set(res.Search);
+        } else {
+          this.filmes.set([]);
         }
+      },
+      error: (err) => {
+        console.error('Erro na requisição:', err);
+        this.filmes.set([]);
       }
-    )
+    });
   }
 }

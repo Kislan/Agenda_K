@@ -1,29 +1,42 @@
 <section class="busca-filmes">
-  <form (submit)="$event.preventDefault(); buscarFilmes(busca())">
+  <form (submit)="$event.preventDefault(); buscarFilmes(busca())" class="formulario-busca">
     <label for="titulo">Digite o título do filme:</label>
-
-    <input
-      id="titulo"
-      type="text"
-      [value]="busca()"
-      (input)="atualizarBusca($event)"
-    />
-
-    <button type="submit">Buscar</button>
+    <div class="campo-busca">
+      <input
+        id="titulo"
+        type="text"
+        [value]="busca()"
+        (input)="atualizarBusca($event)"
+        placeholder="Ex: Matrix, Inception..."
+      />
+      <button type="submit">Buscar</button>
+    </div>
   </form>
 
   @if (filmes().length > 0) {
     <div class="lista-filmes">
       @for (filme of filmes(); track filme.imdbID) {
-        <ul class="cartao-filme">
-          <img [src]="filme.Poster" [alt]="filme.Title" />
-
-          <li><h2>{{ filme.Title }}</h2></li>
-          <li><p>Ano: {{ filme.Year }}</p></li>
-          <li><p>Tipo: {{ filme.Type }}</p></li>
-          <br><br>
-        </ul>
+        <article class="cartao-filme">
+          <div class="container-poster">
+            @if (filme.Poster !== 'N/A') {
+              <img [src]="filme.Poster" [alt]="filme.Title" class="poster" />
+            } @else {
+              <div class="sem-poster">Sem Imagem</div>
+            }
+          </div>
+          <div class="conteudo-filme">
+            <h2>{{ filme.Title }}</h2>
+            <ul class="detalhes-filme">
+              <li><strong>Ano:</strong> {{ filme.Year }}</li>
+              <li><strong>Tipo:</strong> <span class="badge-tipo">{{ filme.Type | titlecase }}</span></li>
+            </ul>
+          </div>
+        </article>
       }
+    </div>
+  } @else if (buscaRealizada() && filmes().length === 0) {
+    <div class="mensagem-erro">
+      <p>Nenhum filme encontrado para a busca realizada.</p>
     </div>
   }
 </section>
